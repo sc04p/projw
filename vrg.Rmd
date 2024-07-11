@@ -1,0 +1,41 @@
+---
+title: "rmk"
+author: "hayk"
+date: "2024-07-11"
+output: html_document
+execute: echo: false
+---
+```{r}
+#| message: false
+library(tidyverse)
+library(knitr)
+library(ggplot2)
+data <- read.csv("vazgen.csv")
+
+data2 <- read.csv("maralik.csv")
+
+combined <- bind_rows(data, data2)
+
+```
+
+
+
+
+
+```{r}
+# Libraries
+library(ggplot2)
+library(babynames) 
+library(dplyr)
+
+# Keep only 3 names
+don <- babynames %>% 
+  filter(name %in% c("Ashley", "Patricia", "Helen")) %>%
+  filter(sex=="F")
+  
+# Plot
+don %>%
+  ggplot( aes(x=temperature, y=rain, group=combined, color=devices)) +
+    geom_line()
+```
+
